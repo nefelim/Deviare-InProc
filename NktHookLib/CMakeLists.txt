@@ -22,11 +22,12 @@ source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${HEADERS})
 source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${gen})
 
 add_library(NktHookLib STATIC ${SRC} ${HEADERS})
-target_include_directories(NktHookLib PRIVATE
-  $<BUILD_INTERFACE:${GEN}>
+target_include_directories(NktHookLib PUBLIC
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>
+    $<BUILD_INTERFACE:${GEN}>
 )
 
-target_link_libraries(NktHookLib PRIVATE Helpers DeviareInProc)
+target_link_libraries(NktHookLib PUBLIC DeviareInProc Helpers libudis86)
 
 add_subdirectory(Src/Asm)
 add_subdirectory(Src/libudis86)
