@@ -70,7 +70,11 @@ add_subdirectory(NktHookLib)
 add_subdirectory(Obj2Inc)
 
 # check if building as a stand-alone project
-if(DEVIARE_BUILD_SAMPLES)
+#making sure we can build standalone under windows
+get_filename_component(CURRENT_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR} ABSOLUTE)
+get_filename_component(SOURCE_DIR ${CMAKE_SOURCE_DIR} ABSOLUTE)
+
+if(${CURRENT_SOURCE_DIR} STREQUAL ${SOURCE_DIR} AND DEVIARE_BUILD_SAMPLES)
     file(GLOB_RECURSE DEVIARE_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.h)
     add_library(deviare-headers STATIC ${DEVIARE_HEADERS})
     set_target_properties(deviare-headers PROPERTIES LINKER_LANGUAGE CXX)
