@@ -13,7 +13,7 @@ else()
     )
 endif()
 
-set_source_files_properties(${ASM} PROPERTIES COMPILE_FLAGS "/c /nologo /safeseh")
+set_source_files_properties(${ASM} PROPERTIES COMPILE_FLAGS "/c /nologo")
 
 source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${ASM})
 

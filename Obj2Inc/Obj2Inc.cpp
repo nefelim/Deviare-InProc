@@ -27,7 +27,6 @@
  *
  **/
 
-#define _WIN32_WINNT 0x0500
 #include <windows.h>
 #include <conio.h>
 #include <stdio.h>
@@ -319,7 +318,7 @@ err_cantwrite:
       }
       if ((nLen = i) == 0)
         continue;
-      if (fprintf(fp, "#define %s_%.*s_OFFSET %lu\n", szVarNameA, nLen, sA, dwValue) == 0)
+      if (fprintf(fp, "#define %s_%.*s_OFFSET %lu\n", szVarNameA, (int)nLen, sA, dwValue) == 0)
         goto err_cantwrite;
     }
   }
